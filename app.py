@@ -7,7 +7,7 @@ from Layoute.page import pageLayoute
 
 def main():
     navbar , start_date ,end_date ,selectedata =pageLayoute()
-    if navbar =="Nature Culture":
+    if navbar =="Caracteristique":
         natureCultureLayout(selectedata,start_date,end_date)      
     if navbar =="Map":
         mapLayout(selectedata,start_date,end_date)
