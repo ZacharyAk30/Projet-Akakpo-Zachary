@@ -1,6 +1,7 @@
 import streamlit as st
-from filter import applyfilter
+from filter import applyfilter, dep_to_num
 from plot import valFonParDep,valFonParSufaceRBatie,histvalfon
+from loadData import loadregion
 
 
 def MeilleursVentesLayoute(selectedata,start_date,end_date):
@@ -17,13 +18,18 @@ def MeilleursVentesLayoute(selectedata,start_date,end_date):
     st.title(f"Prix {medmean2} du mètre carré par département")
     
     st.bar_chart(valFonParSufaceRBatie(df,medmean=medmean2))
-
+    
     st.title("Repartition des valeurs fonciere ")
     slidenum = st.select_slider(
-    "Pour les valeurs fonciere en dessous de 10 puissance ?",
-    options=[i for i in range(1,10)])
+    "Quelle est votre prix ?",
+    options=[10**i for i in range(1,10)])
     typelocal = st.radio(
-    "Quel type de bien ?",
+    "Quel type de bien cherchez-vous ?",
     df['type_local'].unique())
+    region=loadregion()
+    numdep = st.selectbox(
+    'Ou voulez-vous vous installer ?',
+    list(region["Département"])
+    )
 
-    st.plotly_chart(histvalfon(df,slidenum,typelocal))
+    st.plotly_chart(histvalfon(df,slidenum,typelocal,dep_to_num(numdep,region)))

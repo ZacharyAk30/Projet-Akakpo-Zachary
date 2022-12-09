@@ -1,6 +1,6 @@
 import streamlit as st
 from filter import applyfilter,loadregion,dep_to_num
-from plot import proportionTypeLocal,valfoncbyTypelocalbydep
+from plot import proportionTypeLocal,valfoncbyTypelocalbydep,histvalfon
 
 
 def analyseDepLayoute(selectedata,start_date,end_date):

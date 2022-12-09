@@ -5,8 +5,9 @@ import plotly.graph_objects as go
 from bokeh.plotting import figure
 import math
 
-def histvalfon(df,slidenum,typelocal):
-    x=df[df['valeur_fonciere']<=10**slidenum]
+def histvalfon(df,slidenum,typelocal,numdep):
+    x=df[df["coldep"]==numdep]
+    x=x[x['valeur_fonciere']<=10**slidenum]
     x=x[['valeur_fonciere','type_local']]
     x=x[x["type_local"]==typelocal]
     fig = px.histogram(x, x="valeur_fonciere")
