@@ -6,7 +6,7 @@ import datetime
 def pageLayoute():
     navbar=option_menu(
             menu_title="Pages",
-            options=["Nature Culture","Map","Meilleurs Ventes","Analyse sur un departement"],
+            options=["Caracteristique","Map","Meilleurs Ventes","Analyse sur un departement"],
             icons=["house","book","book","book"],
             menu_icon="cast",
             default_index=0,
@@ -37,6 +37,6 @@ def pageLayoute():
             )
         end_date = st.date_input(
             "end Date",
-            datetime.date(int(selectedata), 12, 1)
+            datetime.date(int(selectedata),1, 31)
             )
     return navbar , start_date ,end_date,selectedata
