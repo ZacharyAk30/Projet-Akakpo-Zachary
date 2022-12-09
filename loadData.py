@@ -4,12 +4,14 @@ import pandas as pd
 
 @st.cache(allow_output_mutation=True)
 def loadregion():
-    region=pd.read_csv("Data/region.csv")
+    root=r"C:/Users/zacha/OneDrive/Documents/DataViz/Projet-Akakpo-Zachary/Data"
+    region=pd.read_csv(root+"/region.csv")
     return region
 
 @st.cache(allow_output_mutation=True)
 def loadataframe(selectedata,sample=True):
+    root=r"C:/Users/zacha/OneDrive/Documents/DataViz/Projet-Akakpo-Zachary/Data"
     if sample:
-        return pd.read_csv(f"Data\sample\df{selectedata}.csv")
+        return pd.read_csv(root+f"\sample\df{selectedata}.csv")
     else:
-        return pd.read_csv(f"Data/full_{selectedata}.csv")
+        return pd.read_csv(root+f"/full_{selectedata}.csv")
